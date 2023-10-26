@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rgb(83, 81, 81);
+    margin: 0;
+    width: 100%;
+    padding: 0.5rem;
+    justify-content: space-around;
+}
+
+.navbar-item {
+    flex-basis: 20%;
+    list-style-type: none;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color: rgb(200, 200, 200); 
+    padding: .8rem;
+    margin: 0.8rem;
+    border: black;
+    border-radius: 10cm;
+}
+
+.navbar-link {
+    text-decoration: none;
+    font-family: "Quicksand", sans-serif;
+    letter-spacing: 1px;
+    
+}
+
+.navbar-logout {
+    margin-left: auto;
+    color: rgb(253, 105, 36);
+}
+
+.navbar-item:hover {
+    color:rgb(252, 252, 252);
+    transition: 0.7s;
+}
+

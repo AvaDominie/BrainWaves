@@ -1,0 +1,23 @@
+
+
+img {
+    border-radius: 50%;
+    width: 20%;
+    height: 25%;
+}
+
+/* .allArtists {
+    
+} */
+
+
+.like-btn {
+    background-color:green;
+    box-shadow: 0px 0px 2px 2px #1c5a09;
+
+}
+
+.like-btn:hover {
+    background-color:#1c5a09;
+    transition: 0.7s;
+}
