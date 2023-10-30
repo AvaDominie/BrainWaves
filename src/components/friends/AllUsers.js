@@ -6,11 +6,7 @@ import "./User.css"
 
 export const AllUsers = ({ user }) => {
     
-
-    // const topic = allTopics.find((topic) => topic.id === post.topicId)
-    // console.log(topic)
-
-
+    
     return (
         <div key={user.id}>
             <img className="pfp-url" src={user.profilePictureURL} alt={user.name} />
