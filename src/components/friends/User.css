@@ -1,0 +1,15 @@
+
+
+
+.pfp-url {
+    border-radius: 50%;
+    border: 5px solid black;
+    width: 10%;
+    height: 25%;
+
+}
+
+
+.allUsers {
+    text-align: center;
+}

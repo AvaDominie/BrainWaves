@@ -24,7 +24,7 @@ export const Login = () => {
                         user: user.name,
                     })
                     )
-                    navigate(`/${user.id}`)
+                    navigate(`/profile/${user.id}`)
 
             } else {
                 window.alert("Invalid login")

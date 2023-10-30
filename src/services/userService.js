@@ -48,3 +48,9 @@ export const getAllUsers = () => {
 }
 
 
+export const UserLikedArtist = (id) => {
+    return fetch(`http://localhost:8088/artistsLiked/?userId=${id}&_expand=artist`).then((res) =>
+    res.json()
+    )
+}
+

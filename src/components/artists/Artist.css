@@ -1,14 +1,16 @@
 
 
-img {
+.artistList-pic {
     border-radius: 50%;
+    border: 2.5px solid black;
     width: 20%;
     height: 25%;
+
 }
 
-/* .allArtists {
-    
-} */
+.allArtists {
+    text-align: center;
+}
 
 
 .like-btn {
@@ -21,3 +23,5 @@ img {
     background-color:#1c5a09;
     transition: 0.7s;
 }
+
+

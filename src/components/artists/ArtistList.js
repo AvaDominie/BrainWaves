@@ -12,9 +12,9 @@ export const AllArtistList = () => {
     useEffect(() => {
         getAllArtists().then((data) => {
             setAllArtist(data)
-            console.log(allArtist)
+            
         })
-    }, [allArtist])
+    }, [])
 
 
 
@@ -26,7 +26,7 @@ export const AllArtistList = () => {
             {allArtist.map((artist) => {
                 return (
                     <div key={artist.id}>
-                        <img src={artist.artistPictureURL} alt={artist.name} />
+                        <img className="artistList-pic" src={artist.artistPictureURL} alt={artist.name} />
                         <h2>{artist.name}</h2>
                         <p>Genre: {artist.genre}</p>
                         <button className="like-btn">Like</button>
@@ -34,18 +34,6 @@ export const AllArtistList = () => {
                     </div>
                 )
             })}
-            {/* {Array.isArray(allArtist) && allArtist.length > 0 ? (
-                allArtist.map((artist) => (
-                    <div key={artist.id}>
-                        <img src={artist.pictureURL} alt={artist.name} />
-                        <h2>{artist.name}</h2>
-                        <p>Genre: {artist.genre}</p>
-                        <button>Like</button>
-                    </div>
-                ))
-            ) : (
-                <p>No artists found.</p>
-            )} */}
 
             {/* Display add new artist button */}
 
