@@ -5,6 +5,10 @@ import { UserProfile } from "../components/UserProfile/UserProfile"
 import { AllArtistList } from "../components/artists/ArtistList"
 import { AllUserList } from "../components/friends/UserList"
 import { useState, useEffect } from "react"
+import { AboutInfo } from "../components/about/About"
+import { EditProfile } from "../components/UserProfile/EditProfile"
+import { ArtistsDetails } from "../components/artists/ArtistDetails"
+import { UsersDetails } from "../components/friends/UserDetails"
 
 
 
@@ -34,9 +38,17 @@ export const Views = () => {
 
                     <Route path="profile/:userId" element={<UserProfile />} />
 
-                    <Route path="artists" element={<AllArtistList />} />
+                    <Route path="edit-profile/:userId" element={<EditProfile />} />
 
-                    <Route path="friends" element={<AllUserList />} />
+                    <Route path="artists/:userId" element={<AllArtistList />} />
+                    
+                    <Route path="artists-details/:artistId" element={<ArtistsDetails />} />
+
+                    <Route path="friends/:userId" element={<AllUserList />} />
+
+                    <Route path="users-details/:userId" element={<UsersDetails />} />
+
+                    <Route path="about" element={<AboutInfo />} />
 
                 </Route>
             </Routes>

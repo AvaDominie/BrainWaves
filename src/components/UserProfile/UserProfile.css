@@ -36,11 +36,12 @@
 }
 
 .user-info-friends {
-    text-align: left;
+    text-align: center;
 }
 
 .user-info-edit-btn {
     text-align: right;
+    color: green;
 }
 
 .Unlike-btn {

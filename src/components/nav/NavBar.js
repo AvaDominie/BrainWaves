@@ -17,10 +17,10 @@ export const NavBar = ({currentUser}) => {
             <Link to={`/profile/${currentUser.id}`}>Profile</Link>
         </li>
         <li className="navbar-item">
-            <Link to="/friends">Add Friends</Link>
+            <Link to={`/friends/${currentUser.id}`}>Add Friends</Link>
         </li>
         <li className="navbar-item">
-            <Link to="/artists">Artists</Link>
+            <Link to={`/artists/${currentUser.id}`}>Artists</Link>
         </li>
         <li className="navbar-item">
             <Link to="/about">About BrainWave</Link>
