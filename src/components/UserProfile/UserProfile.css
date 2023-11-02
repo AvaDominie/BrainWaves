@@ -54,3 +54,7 @@
     background-color: rgb(105, 6, 6);
     transition: 0.7s;
 } 
+
+h2 {
+    text-align: center;
+}

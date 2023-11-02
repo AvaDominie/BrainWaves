@@ -2,7 +2,7 @@
 import "./UserProfile.css"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { UserAddedFriend, UserLikedArtist, getUser, getAllUsers, UnlikeArtist, ArtistsLiked } from "../../services/userService"
+import { UserAddedFriend, UserLikedArtist, getUser, getAllUsers, UnlikeArtist, unfriendUser } from "../../services/userService"
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
@@ -12,7 +12,6 @@ export const UserProfile = () => {
     const [user, setUser] = useState({})
     const [likedArtists, setLikedArtists] = useState([])
     const [addedFriends, setAddedFriends] = useState([])
-    const [artistsLiked, setArtistsLiked] = useState([])
     const [userfriends, setUserFriends] = useState([])
     const { userId } = useParams()
     const navigate = useNavigate()
@@ -34,9 +33,7 @@ export const UserProfile = () => {
             setAddedFriends(data)
         })
 
-        ArtistsLiked(userId).then((data) => {
-            setArtistsLiked(data)
-        })
+        
 
     }, [userId])
 
@@ -52,7 +49,7 @@ export const UserProfile = () => {
             }, {})
 
             // Extract and store user friends' information
-            const friendsInfo = addedFriends.map((friend) => usersById[friend.friendsId]);
+            const friendsInfo = addedFriends.map((friend) => usersById[friend.friendsId])
             setUserFriends(friendsInfo);
         })
     }, [addedFriends])
@@ -67,16 +64,26 @@ export const UserProfile = () => {
 
 
 
-    const handleUnlike = (liked) => {
-        const likeId = liked.id
-        console.log("like id", likeId)
+    const handleUnlike = (likedId) => {
 
-        UnlikeArtist(likeId).then(() => {
+        console.log("like id", likedId)
+
+        UnlikeArtist(likedId).then(() => {
             // Remove the unliked artist from the likedArtists state
-            setLikedArtists((prevLikedArtists) => prevLikedArtists.filter((artist) => artist.id !== likeId));
+            setLikedArtists((prevLikedArtists) => prevLikedArtists.filter((artist) => artist.id !== likedId))
         })
     }
+    
 
+
+    const handleUnfriend = (friendId) => {
+        console.log("friend id", friendId)
+
+        unfriendUser(friendId).then(() => {
+            // Remove the friend relationship from friends state
+            setAddedFriends((prevAddedFriends) => prevAddedFriends.filter((friend) => friend.id !== friendId))
+        })
+    }
 
 
     return (
@@ -105,8 +112,7 @@ export const UserProfile = () => {
                         <img className="artistList-pic" src={liked.artist.artistPictureURL} alt={liked.artist.name} />
                         <div>Genre: {liked.artist.genre}</div>
 
-                        <button className="Unlike-btn" onClick={() => handleUnlike(liked.artist.userId)}>Unlike</button>
-
+                        <button className="Unlike-btn" onClick={() => handleUnlike(liked.id)}>Unlike</button>
                         <h1>_________________________________________________________________________________________________________________________________________________</h1>
                     </div>
                 ))}
@@ -117,12 +123,12 @@ export const UserProfile = () => {
                 <h1>Friends</h1>
                 {userfriends.map((friend) => (
                     <div key={friend.id}>
-                        <img className="pfp-url" src={friend.profilePictureURL} alt={friend.name} />
-                        <Link to={`/users-details/${friend.id}`}>
-                            <h2>{friend.name}</h2>
+                        <img className="pfp-url" src={friend?.profilePictureURL} alt={friend?.name} />
+                        <Link to={`/users-details/${friend?.id}`}>
+                            <h2>{friend?.name}</h2>
                         </Link>
 
-                        <button className="Unlike-btn">Unfriend</button>
+                        <button className="Unlike-btn" onClick={() => handleUnfriend(friend?.id)}>Unfriend</button>
                         <h1>_________________________________________________________________________________________________________________________________________________</h1>
 
                     </div>
@@ -132,5 +138,5 @@ export const UserProfile = () => {
             {/* Display edit button */}
             <button className="user-info-edit-btn" onClick={LinktoEditForm}>Edit</button>
         </div>
-    );
-};
+    )
+}

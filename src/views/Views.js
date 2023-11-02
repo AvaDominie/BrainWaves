@@ -9,6 +9,7 @@ import { AboutInfo } from "../components/about/About"
 import { EditProfile } from "../components/UserProfile/EditProfile"
 import { ArtistsDetails } from "../components/artists/ArtistDetails"
 import { UsersDetails } from "../components/friends/UserDetails"
+import { CreateArtist } from "../components/artists/CreateNewArtistForm"
 
 
 
@@ -43,6 +44,8 @@ export const Views = () => {
                     <Route path="artists/:userId" element={<AllArtistList />} />
                     
                     <Route path="artists-details/:artistId" element={<ArtistsDetails />} />
+
+                    <Route path="artists-create-form/:userId" element={<CreateArtist />} />
 
                     <Route path="friends/:userId" element={<AllUserList />} />
 

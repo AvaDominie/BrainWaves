@@ -25,7 +25,7 @@ export const createUser = (customer) => {
 }
 
 export const updateUser = (currentUser) => {
-    return fetch(`http://localhost:8088/users/${currentUser}`, {
+    return fetch(`http://localhost:8088/users/${currentUser.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -55,15 +55,18 @@ export const UserLikedArtist = (id) => {
 }
 
 
-export const UserAddedFriend = (id) => {
-    return fetch(`http://localhost:8088/friends/?userId=${id}`).then((res) =>
+export const UserAddedFriend = (id, friendsId) => {
+    //I need to access the friendsId information to be able to delete it
+    // not sure how to use friendsId number as the user
+    // I'm able to friend with no problem just the unfriend is the problem
+    return fetch(`http://localhost:8088/friends/?userId=${id}&_expand=user=${friendsId}`).then((res) =>
         res.json()
     )
 }
 
 export const ArtistsLiked = (id) => {
     return fetch(`http://localhost:8088/artistsLiked/?userId=${id}`).then((res) =>
-    res.json()
+        res.json()
     )
 }
 
@@ -78,8 +81,8 @@ export const likeArtist = (id) => {
 }
 
 
-export const UnlikeArtist = (likedId) => {
-    return fetch(`http://localhost:8088/artistsLiked/${likedId}`, {
+export const UnlikeArtist = (artistLikedId) => {
+    return fetch(`http://localhost:8088/artistsLiked/${artistLikedId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -94,3 +97,42 @@ export const GetArtistById = (id) => {
         res.json()
     )
 }
+
+export const friendUser = (id) => {
+    return fetch(`http://localhost:8088/friends/?userId=${id}&_expand=user`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(id),
+    }).then((res) => res.json())
+}
+
+
+export const unfriendUser = (friendsId) => {
+    return fetch(`http://localhost:8088/friends/${friendsId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then((res) => res.json())
+}
+
+
+
+export const createNewArtist = (artist) => {
+    return fetch(`http://localhost:8088/artists`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(artist),
+    }).then((res) => res.json())
+
+}
+
+
+
+
+
+

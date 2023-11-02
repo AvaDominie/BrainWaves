@@ -14,9 +14,7 @@ export const AllUsers = ({ user }) => {
             <h2>{user.name}</h2>
             </Link>
             <p>Genre: {user.genre}</p>
-            <button className="like-btn">Friend</button>
-            <h1>_________________________________________________________________________________________________________________________________________________</h1>
-        </div>
+            </div>
     )
 
 

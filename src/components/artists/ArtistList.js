@@ -3,7 +3,7 @@ import { getAllArtists, likeArtist } from "../../services/userService"
 import "./Artist.css"
 import { ArtistSearchBar } from "../search/SearchBar"
 import { AllArtists } from "./AllArtists"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import React from 'react';
 
 
@@ -16,6 +16,7 @@ export const AllArtistList = () => {
     const [searchTerm, setSearchTerm] = useState("")
     const { userId } = useParams()
 
+    const navigate = useNavigate()
 
     useEffect(() => {
         getAllArtists().then((data) => {
@@ -45,25 +46,27 @@ export const AllArtistList = () => {
         likeArtist(newArtistLiked, userId)
     }
 
-
+    const LinktoArtistForm = () => {
+        navigate(`/artists-create-form/${userId}`)
+    }
 
 
 
         return (
             <div className="allArtists">
+                <button className="user-info-edit-btn" onClick={LinktoArtistForm}>Add New Artist</button>
                 {/* Search Artist */}
                 <h2>Search Artist</h2>
                 <ArtistSearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-
                 {/* Display all filtered Artists */}
                 {filteredArtists.map(artist => {
                     return (
-                        <div>
-                        <AllArtists key={artist.id} artist={artist} />
+                        <div key={artist.id}>
+                        <AllArtists artist={artist} />
                         <button 
                         className="like-btn"
                         onClick={() => handleLike(artist)}
-                        >Add Artist</button>
+                        >Like</button>
                         <h1>_________________________________________________________________________________________________________________________________________________</h1>
                         </div>
                     )

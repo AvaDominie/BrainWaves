@@ -1,9 +1,10 @@
 
 import { useState, useEffect } from "react"
-import { getAllUsers } from "../../services/userService"
+import { friendUser, getAllUsers } from "../../services/userService"
 import "./User.css"
 import { UserSearchBar } from "../search/SearchBar"
 import { AllUsers } from "./AllUsers"
+import { useParams } from "react-router-dom"
 
 
 
@@ -11,6 +12,7 @@ export const AllUserList = () => {
     const [allUser, setAllUser] = useState([])
     const [filteredUsers, setFilteredUsers] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
+    const { userId } = useParams()
 
 
     useEffect(() => {
@@ -29,6 +31,17 @@ export const AllUserList = () => {
             
     }, [allUser, searchTerm])
 
+    const userIdNumber = parseInt(userId)
+
+    const handleFriend = (user) => {
+
+        const newFriend = {
+            userId: userIdNumber,
+            friendsId: user.id
+        }
+        friendUser(newFriend, userId)
+    }
+
 
     return (
         <div className="allUsers">
@@ -40,7 +53,13 @@ export const AllUserList = () => {
             {/* Display all filtered users */}
             {filteredUsers.map( user => {
                 return (
-                    <AllUsers key={user.id} user={user} />
+                    <div key={user.id}>
+                    <AllUsers user={user} />
+                    <button className="like-btn"
+                    onClick={() => handleFriend(user)}
+                    >Friend</button>
+                    <h1>_________________________________________________________________________________________________________________________________________________</h1>
+                    </div>
                 )
             })}
             </div>
