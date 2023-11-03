@@ -34,6 +34,17 @@ export const updateUser = (currentUser) => {
     })
 }
 
+export const updateArtist = (artistId, updateArtist) => {
+    return fetch(`http://localhost:8088/artists/${artistId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateArtist),
+    })
+} 
+
+
 export const getAllArtists = () => {
     return fetch(`http://localhost:8088/artists`).then((res) =>
         res.json()
@@ -54,13 +65,10 @@ export const UserLikedArtist = (id) => {
     )
 }
 
-
-export const UserAddedFriend = (id, friendsId) => {
-    //I need to access the friendsId information to be able to delete it
-    // not sure how to use friendsId number as the user
-    // I'm able to friend with no problem just the unfriend is the problem
-    return fetch(`http://localhost:8088/friends/?userId=${id}&_expand=user=${friendsId}`).then((res) =>
-        res.json()
+// I need to get the friends id so I can delete it later
+export const UserAddedFriend = (id) => {
+    return fetch(`http://localhost:8088/friends/?userId=${id}`).then((res) =>
+    res.json()
     )
 }
 
@@ -94,7 +102,7 @@ export const UnlikeArtist = (artistLikedId) => {
 
 export const GetArtistById = (id) => {
     return fetch(`http://localhost:8088/artists?id=${id}`).then((res) =>
-        res.json()
+    res.json()
     )
 }
 
@@ -109,8 +117,12 @@ export const friendUser = (id) => {
 }
 
 
-export const unfriendUser = (friendsId) => {
-    return fetch(`http://localhost:8088/friends/${friendsId}`, {
+export const unfriendUser = (id) => {
+    console.log("this is the id", id)
+    //I need to access the friendsId information to be able to delete it
+    // not sure how to use friendsId number as the user
+    // I'm able to friend with no problem just the unfriend is the problem
+    return fetch(`http://localhost:8088/friends/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",

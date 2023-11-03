@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export const AllArtists = ({ artist }) => {
+export const AllArtists = ({ artist, userId }) => {
 
     return (
         <div key={artist.id}>
@@ -15,7 +15,11 @@ export const AllArtists = ({ artist }) => {
                 <h2>{artist.name}</h2>
             </Link>
             <p>Genre: {artist.genre}</p>
+            {artist.userId === userId && (
+                <Link to={`/artists-edit-form/${artist.id}`}>
+                    <button className="edit-btn">Edit Artist</button>
+                </Link>
+            )}
         </div>
     )
 }
-

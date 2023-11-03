@@ -62,7 +62,7 @@ export const AllArtistList = () => {
                 {filteredArtists.map(artist => {
                     return (
                         <div key={artist.id}>
-                        <AllArtists artist={artist} />
+                        <AllArtists artist={artist} userId={userIdNumber} />
                         <button 
                         className="like-btn"
                         onClick={() => handleLike(artist)}
@@ -79,6 +79,7 @@ export const AllArtistList = () => {
 
 
     }
+
 
 
 
