@@ -66,8 +66,9 @@ export const UserLikedArtist = (id) => {
 }
 
 // I need to get the friends id so I can delete it later
+// http://localhost:8088/friends/?userId=${id}&_expand=friends
 export const UserAddedFriend = (id) => {
-    return fetch(`http://localhost:8088/friends/?userId=${id}`).then((res) =>
+    return fetch(`http://localhost:8088/friends/?currentUserId=1&_expand=user`).then((res) =>
     res.json()
     )
 }

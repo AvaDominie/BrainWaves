@@ -36,8 +36,8 @@ export const AllUserList = () => {
     const handleFriend = (user) => {
 
         const newFriend = {
-            userId: userIdNumber,
-            friendsId: user.id
+            currentUserId: userIdNumber,
+            userId: user.id
         }
         friendUser(newFriend, userId)
     }

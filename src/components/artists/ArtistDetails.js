@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { GetArtistById } from "../../services/userService"
 
 
@@ -10,7 +10,7 @@ export const ArtistsDetails = () => {
 
     const [artists, setArtists] = useState([])
     const { artistId } = useParams()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -51,11 +51,6 @@ export const ArtistsDetails = () => {
                 </div>
             )
             )}
-            {/* { isCurrentUserArtistCreator && (
-                <button className="edit-artist-button">
-                    Edit Artist
-                </button>
-            )} */}
         </div>
     )
 }

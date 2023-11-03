@@ -2,7 +2,7 @@
 import "./UserProfile.css"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { UserAddedFriend, UserLikedArtist, getUser, getAllUsers, UnlikeArtist, unfriendUser } from "../../services/userService"
+import { UserAddedFriend, UserLikedArtist, getUser, UnlikeArtist, unfriendUser } from "../../services/userService"
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
@@ -12,10 +12,10 @@ export const UserProfile = () => {
     const [user, setUser] = useState({})
     const [likedArtists, setLikedArtists] = useState([])
     const [addedFriends, setAddedFriends] = useState([])
-    const [userfriends, setUserFriends] = useState([])
+    // const [userfriends, setUserFriends] = useState([])
     const { userId } = useParams()
     const navigate = useNavigate()
-    const [foundFriend, setFoundFriend] = useState({})
+    // const [foundFriend, setFoundFriend] = useState({})
 
 
 
@@ -26,10 +26,12 @@ export const UserProfile = () => {
         })
 
         UserLikedArtist(userId).then((data) => {
+            console.log("liked data", data)
             setLikedArtists(data)
         })
 
         UserAddedFriend(userId).then((data) => {
+            console.log("friend data", data)
             setAddedFriends(data)
         })
 
@@ -40,28 +42,6 @@ export const UserProfile = () => {
 
 
 
-    // get all friends related to current user's userId, and set that to userFriends
-    // (expand this so we have info about each of those other users)
-    // set it to UserFriends
-    useEffect(() => {
-
-        UserAddedFriend().then((data) => {
-            setUserFriends(data)
-        })
-
-        getAllUsers().then((data) => {
-            const usersById = data.reduce((acc, user) => {
-                acc[user?.id] = user;
-                return acc;
-            }, {})
-
-            // Extract and store user friends' information
-            const friendsInfo = addedFriends.map((friend) => usersById[friend?.friendsId])
-            setUserFriends(friendsInfo)
-        })
-
-
-    }, [addedFriends])
 
 
     const LinktoEditForm = () => {
@@ -83,33 +63,35 @@ export const UserProfile = () => {
         })
     }
 
-
-
+    
     const handleUnfriend = (friendId) => {
         console.log("friend id", friendId)
-
-        // need friend.id not friendId
-        const foundFriendData = addedFriends.find((friend) => friend.friendsId === friendId)
-        setFoundFriend(foundFriendData)
-        console.log(foundFriend.id)
-        
-        unfriendUser(foundFriend.id).then(() => {
-            // Remove the friend relationship from friends state
-            
-            setAddedFriends((prevAddedFriends) => prevAddedFriends.filter((friend) => friend.id !== foundFriend.id))
-            console.log(addedFriends)
+    
+        unfriendUser(friendId).then(() => {
+            // Remove the unliked artist from the likedArtists state
+            setAddedFriends((prevLikedArtists) => prevLikedArtists.filter((friend) => friend.id !== friendId))
         })
-    }
 
-    // useEffect(() => {
-    //     if (foundFriend.id) {
-    //         unfriendUser(foundFriend.id).then(() => {
-    //             // Remove the friend relationship from friends state
-    //             setAddedFriends((prevAddedFriends) => prevAddedFriends.filter((friend) => friend.id !== foundFriend.id))
-    //             console.log(addedFriends)
-    //         })
-    //     }
-    // }, [foundFriend])
+
+        // // Find the friend with the matching id
+        // const foundFriendData = addedFriends.find((friend) => friend.friendsId === friendId)
+        // console.log("this is addedFriends", addedFriends)
+    
+        // if (foundFriendData) {
+        //     // If the friend is found, unfriend the user
+        //     unfriendUser(foundFriendData.id).then(() => {
+        //         // Remove the friend relationship from friends state
+        //         setAddedFriends((prevAddedFriends) => {
+        //             const updatedFriends = prevAddedFriends.filter((friend) => friend.id !== foundFriendData.id)
+        //             console.log(updatedFriends)
+        //             return updatedFriends
+        //         })
+        //     })
+        // } else {
+        //     // If the friend is not found, log an error message
+        //     console.error('Friend not found:', friendId)
+        // }
+    }
 
 
     return (
@@ -130,8 +112,9 @@ export const UserProfile = () => {
             {/* Display artists picture, name, genre, and unlike button */}
             <section className="user-info-liked">
                 <h1>Liked Artists</h1>
+                
                 {likedArtists.map((liked) => (
-                    <div key={liked.artist.id}>
+                    <div key={liked.id}>
                         <Link to={`/artists-details/${liked.artist.id}`}>
                             <div>{liked.artist.name}</div>
                         </Link>
@@ -147,14 +130,14 @@ export const UserProfile = () => {
             {/* Display friends' picture and name */}
             <section className="user-info-friends">
                 <h1>Friends</h1>
-                {userfriends.map((friend) => (
-                    <div key={friend?.id}>
-                        <img className="pfp-url" src={friend?.profilePictureURL} alt={friend?.name} />
+                {addedFriends.map((friend) => (
+                    <div key={friend.user.id}>
+                        <img className="pfp-url" src={friend.user.profilePictureURL} alt={friend.user.name} />
                         <Link to={`/users-details/${friend?.id}`}>
-                            <h2>{friend?.name}</h2>
+                            <h2>{friend.user.name}</h2>
                         </Link>
 
-                        <button className="Unlike-btn" onClick={() => handleUnfriend(friend?.id)}>Unfriend {friend?.id}</button>
+                        <button className="Unlike-btn" onClick={() => handleUnfriend(friend?.id)}>Unfriend {friend.user.id}</button>
                         <h1>_________________________________________________________________________________________________________________________________________________</h1>
 
                     </div>
