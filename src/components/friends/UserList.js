@@ -49,6 +49,7 @@ export const AllUserList = () => {
             {/* Search Users */}
             <h2>Search User:</h2>
             <UserSearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+            <br/>
             
             {/* Display all filtered users */}
             {filteredUsers.map( user => {
@@ -58,7 +59,7 @@ export const AllUserList = () => {
                     <button className="like-btn"
                     onClick={() => handleFriend(user)}
                     >Friend</button>
-                    <h1>_________________________________________________________________________________________________________________________________________________</h1>
+                    <hr></hr>
                     </div>
                 )
             })}

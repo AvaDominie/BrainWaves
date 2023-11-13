@@ -32,17 +32,13 @@
 }
 
 .user-info-liked {
-    text-align: left;
+    text-align: center;
 }
 
 .user-info-friends {
     text-align: center;
 }
 
-.user-info-edit-btn {
-    text-align: center;
-    color: rgb(255, 255, 255);
-}
 
 .Unlike-btn {
     background-color:rgb(172, 6, 6);
@@ -55,9 +51,13 @@
     transition: 0.7s;
 } 
 
-h2 {
-    text-align: center;
+
+.user-bio {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(226, 230, 222);
 }
+
 
 
 
@@ -71,3 +71,4 @@ h2 {
     background-color:rgb(156, 123, 12);
     transition: 0.7s;
 }
+

@@ -52,33 +52,39 @@ export const AllArtistList = () => {
 
 
 
-        return (
-            <div className="allArtists">
-                <button className="user-info-edit-btn" onClick={LinktoArtistForm}>Add New Artist</button>
-                {/* Search Artist */}
-                <h2>Search Artist</h2>
-                <ArtistSearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-                {/* Display all filtered Artists */}
-                {filteredArtists.map(artist => {
-                    return (
-                        <div key={artist.id}>
+    return (
+        <div className="allArtists">
+            <br />
+            <button className="user-info-edit-btn" onClick={LinktoArtistForm}>Add New Artist</button>
+            <br />
+            <br />
+            {/* Search Artist */}
+            <h2>Search Artist</h2>
+            <ArtistSearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+            <br/>
+            
+            {/* Display all filtered Artists */}
+            {filteredArtists.map(artist => {
+                return (
+                    <div key={artist.id}>
                         <AllArtists artist={artist} userId={userIdNumber} />
-                        <button 
-                        className="like-btn"
-                        onClick={() => handleLike(artist)}
+                        <br/>
+                        <button
+                            className="like-btn"
+                            onClick={() => handleLike(artist)}
                         >Like</button>
-                        <h1>_________________________________________________________________________________________________________________________________________________</h1>
-                        </div>
-                    )
-                })}
+                        <hr></hr>
+                    </div>
+                )
+            })}
 
-            </div>
-        )
-
-
+        </div>
+    )
 
 
-    }
+
+
+}
 
 
 

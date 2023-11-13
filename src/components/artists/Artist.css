@@ -1,5 +1,3 @@
-
-
 .artistList-pic {
     border-radius: 50%;
     border: 2.5px solid black;
@@ -14,22 +12,60 @@
 
 
 .like-btn {
-    background-color:green;
+    background-color: green;
     box-shadow: 0px 0px 2px 2px #1c5a09;
 
 }
 
 .like-btn:hover {
-    background-color:#1c5a09;
+    background-color: #1c5a09;
     transition: 0.7s;
 }
 
 .edit-btn {
-    background-color:rgb(199, 155, 12);
+    background-color: rgb(199, 155, 12);
     box-shadow: 0px 0px 2px 2px rgb(156, 123, 12);
 }
 
 .edit-btn:hover {
-    background-color:rgb(156, 123, 12);
+    background-color: rgb(156, 123, 12);
     transition: 0.7s;
+}
+
+
+.artist-name {
+    text-align: center;
+}
+
+
+.artist-info-link {
+    color: black;
+}
+
+.artist-info-link:hover {
+    color: rgb(187, 139, 231);
+}
+
+.artist-picture {
+    border-radius: 5.0%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.artist-info-link { 
+    text-align: center;
+}
+
+.artist-info {
+    padding: 20px;
+    background-color: rgb(226, 230, 222);
+}
+
+.artist-genre {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(226, 230, 222);
+    
 }

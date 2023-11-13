@@ -37,7 +37,7 @@ export const EditProfile = () => {
         updateUser(EditUser).then(() => {
 
             // This is not navigating when save is clicked
-            navigate(`profile/${EditUser.id}`);
+            navigate(`/profile/${EditUser.id}`)
             
         });
     }

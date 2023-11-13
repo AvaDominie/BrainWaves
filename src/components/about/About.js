@@ -1,5 +1,5 @@
 
-
+import "./About.css"
 
 
 export const AboutInfo = () => {
@@ -7,7 +7,8 @@ export const AboutInfo = () => {
 
     return (
         <div>
-            <h2>About BrainWave</h2>
+            <h2 className="about-title">About BrainWave</h2>
+            <section className="about-info">
             <p>
                 BrainWave is not just another social networking platform; it's a vibrant community that celebrates the unifying power of music. Our website was founded with a simple yet profound mission: to bring people together through the universal language of music. In a world that's often divided, BrainWave seeks to create connections based on the shared love for melodies, rhythms, and lyrics. Whether you're a fan of classic rock, hip-hop, indie, or any other genre, you'll find your place in our musical haven.
             </p>
@@ -17,6 +18,7 @@ export const AboutInfo = () => {
             <p>
                 Our unique approach goes beyond the standard friend-matching algorithms. While other platforms may focus on superficial interests, BrainWave dives deep into the heart and soul of what truly moves people - music. By connecting individuals based on their favorite artists, albums, and genres, we foster connections that are not only engaging but also enduring. Join BrainWave today and embark on a journey of musical discovery, forging friendships that harmonize with your unique rhythm, and uncovering a community where every note resonates with the mission to bring people together through the power of music.
             </p>
+            </section>
         </div>
     );
 }

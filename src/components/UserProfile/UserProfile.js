@@ -63,10 +63,10 @@ export const UserProfile = () => {
         })
     }
 
-    
+
     const handleUnfriend = (friendId) => {
         console.log("friend id", friendId)
-    
+
         unfriendUser(friendId).then(() => {
             // Remove the unliked artist from the likedArtists state
             setAddedFriends((prevLikedArtists) => prevLikedArtists.filter((friend) => friend.id !== friendId))
@@ -76,7 +76,7 @@ export const UserProfile = () => {
         // // Find the friend with the matching id
         // const foundFriendData = addedFriends.find((friend) => friend.friendsId === friendId)
         // console.log("this is addedFriends", addedFriends)
-    
+
         // if (foundFriendData) {
         //     // If the friend is found, unfriend the user
         //     unfriendUser(foundFriendData.id).then(() => {
@@ -106,25 +106,32 @@ export const UserProfile = () => {
             {/* Display bio */}
             <section className="user-info-bio">
                 <h1>Bio</h1>
-                {user.bio}
+                <p className="user-bio">{user.bio}</p>
             </section>
 
             {/* Display artists picture, name, genre, and unlike button */}
             <section className="user-info-liked">
                 <h1>Liked Artists</h1>
-                
+
                 {likedArtists.map((liked) => (
                     <div key={liked.id}>
                         <Link to={`/artists-details/${liked.artist.id}`}>
                             <div>{liked.artist.name}</div>
                         </Link>
+                        
                         <img className="artistList-pic" src={liked.artist.artistPictureURL} alt={liked.artist.name} />
+                        <br/>
+                        <br/>
                         <div>Genre: {liked.artist.genre}</div>
+                        <br/>
 
                         <button className="Unlike-btn" onClick={() => handleUnlike(liked?.id)}>Unlike</button>
-                        <h1>_______________________________________________________________________________________________________________________________________________________________________________________________</h1>
+                        <hr></hr>
+                        <br />
                     </div>
                 ))}
+                <br />
+                <br />
             </section>
 
             {/* Display friends' picture and name */}
@@ -133,13 +140,12 @@ export const UserProfile = () => {
                 {addedFriends.map((friend) => (
                     <div key={friend.user.id}>
                         <img className="pfp-url" src={friend.user.profilePictureURL} alt={friend.user.name} />
-                        <Link to={`/users-details/${friend?.id}`}>
+                        <Link to={`/users-details/${friend.user.id}`}>
                             <h2>{friend.user.name}</h2>
                         </Link>
 
-                        <button className="Unlike-btn" onClick={() => handleUnfriend(friend?.id)}>Unfriend {friend.user.id}</button>
-                        <h1>_____________________________________________________________________________________________________________________________________________________________________________________________</h1>
-
+                        <button className="Unlike-btn" onClick={() => handleUnfriend(friend?.id)}>Unfriend</button>
+                        <hr></hr>
                     </div>
                 ))}
             </section>

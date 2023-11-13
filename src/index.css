@@ -27,7 +27,7 @@ button,
 input,
 select,
 textarea {
-    font-family: "Nunito", sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body {
@@ -35,13 +35,19 @@ body {
     margin: 0;
 }
 
-h1,
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: xx-large
+}
+
+
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: "Roboto", serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* This prevents all the links in the app from having default underline */
@@ -97,6 +103,7 @@ button {
 
 .btn-info {
     background-color: var(--info);
+    align-self: center;
 }
 
 .btn-info:hover {

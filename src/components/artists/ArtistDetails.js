@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { GetArtistById } from "../../services/userService"
+import "./Artist.css"
 
 
 
@@ -37,17 +38,20 @@ export const ArtistsDetails = () => {
 
                     <section className="artist-info-genre">
                         <h1>Genre</h1>
-                        {artist.genre}
+                        <p className="artist-genre">{artist.genre}</p>
                     </section>
 
                     <section className="artist-info-bio">
                         <h1>About</h1>
-                        {artist.about}
+                        <p className="artist-info">{artist.about}</p>
                     </section>
+                    <br/>
 
                     <section className="artist-info-link">
-                        <a href={artist.listenLink}>Listen to {artist.name}</a>
+                        <a href={artist.listenLink}>Listen to {artist.name} here</a>
                     </section>
+                    <br/>
+                    <br/>
                 </div>
             )
             )}

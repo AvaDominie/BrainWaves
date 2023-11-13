@@ -13,7 +13,6 @@ export const AllUsers = ({ user }) => {
             <Link to={`/users-details/${user.id}`}>
             <h2>{user.name}</h2>
             </Link>
-            <p>Genre: {user.genre}</p>
             </div>
     )
 
