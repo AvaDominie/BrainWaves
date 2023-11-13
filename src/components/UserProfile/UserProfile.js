@@ -105,10 +105,18 @@ export const UserProfile = () => {
 
             {/* Display bio */}
             <section className="user-info-bio">
-                <h1>Bio</h1>
+                <h1 className="bio-title">Bio</h1>
                 <p className="user-bio">{user.bio}</p>
             </section>
-
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             {/* Display artists picture, name, genre, and unlike button */}
             <section className="user-info-liked">
                 <h1>Liked Artists</h1>
@@ -118,12 +126,12 @@ export const UserProfile = () => {
                         <Link to={`/artists-details/${liked.artist.id}`}>
                             <div>{liked.artist.name}</div>
                         </Link>
-                        
+
                         <img className="artistList-pic" src={liked.artist.artistPictureURL} alt={liked.artist.name} />
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         <div>Genre: {liked.artist.genre}</div>
-                        <br/>
+                        <br />
 
                         <button className="Unlike-btn" onClick={() => handleUnlike(liked?.id)}>Unlike</button>
                         <hr></hr>

@@ -31,7 +31,7 @@ export const updateUser = (currentUser) => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(currentUser),
-    })
+    }).then((res) => res.json())
 }
 
 export const updateArtist = (artistId, updateArtist) => {
@@ -41,7 +41,7 @@ export const updateArtist = (artistId, updateArtist) => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(updateArtist),
-    })
+    }).then((res) => res.json())
 } 
 
 

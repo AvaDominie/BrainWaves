@@ -1,4 +1,6 @@
 
+
+
 .welcome-profile {
     text-align: center;
 }
@@ -51,14 +53,21 @@
     transition: 0.7s;
 } 
 
+.bio-title {
+    text-align: left;
+}
 
 .user-bio {
     display: inline-block;
     padding: 10px 20px;
-    background-color: rgb(226, 230, 222);
+    background-color: rgb(123, 141, 130);
 }
 
-
+.user-info-bio {
+    padding: 10px 20px;
+    background-color: rgb(226, 230, 222);
+    float: right;
+}
 
 
 .user-info-edit-btn {
