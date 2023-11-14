@@ -45,6 +45,7 @@ export const AllUserList = () => {
 
     return (
         <div className="allUsers">
+            <br />
 
             {/* Search Users */}
             <h2>Search User:</h2>

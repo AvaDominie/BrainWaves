@@ -96,8 +96,8 @@ export const UserProfile = () => {
 
     return (
         <div>
+            <br />
             <h1 className="welcome-profile">Welcome {user.name}</h1>
-
             {/* Display Picture */}
             <section className="user-info-picture">
                 <img className="user-picture" src={user.profilePictureURL} alt={user.name} />
@@ -108,6 +108,8 @@ export const UserProfile = () => {
                 <h1 className="bio-title">Bio</h1>
                 <p className="user-bio">{user.bio}</p>
             </section>
+            <br />
+            <br />
             <br />
             <br />
             <br />
@@ -140,6 +142,7 @@ export const UserProfile = () => {
                 ))}
                 <br />
                 <br />
+                
             </section>
 
             {/* Display friends' picture and name */}

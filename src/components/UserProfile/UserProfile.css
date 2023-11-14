@@ -3,6 +3,11 @@
 
 .welcome-profile {
     text-align: center;
+    padding: 20px 50px;
+    background-color: rgb(200, 200, 200);
+    width: max-content; 
+    margin: 0 auto; 
+    border-radius: 50%;
 }
 
 .user-picture {
@@ -39,6 +44,14 @@
 
 .user-info-friends {
     text-align: center;
+    padding: .01px;
+    background-color: rgb(200, 200, 200);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max-content; 
+    margin: 0 auto; 
 }
 
 
@@ -71,7 +84,9 @@
 
 
 .user-info-edit-btn {
-    background-color:rgb(199, 155, 12);
+
+    
+    background-color: rgb(199, 155, 12);
     box-shadow: 0px 0px 2px 2px rgb(156, 123, 12);
     
 }
@@ -81,3 +96,13 @@
     transition: 0.7s;
 }
 
+.user-info-liked {
+    padding: 10px 157px;
+    background-color: rgb(226, 230, 222);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    margin: 0 auto; 
+}

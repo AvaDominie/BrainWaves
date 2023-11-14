@@ -38,7 +38,18 @@ export const UsersDetails = () => {
                         <h1>Bio</h1>
                         <p className="user-bio">{user.bio}</p>
                     </section>
-
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                     <section className="user-liked-artists">
                         <h1>Liked Artists</h1>
                         <br />

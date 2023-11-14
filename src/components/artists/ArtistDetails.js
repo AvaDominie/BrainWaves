@@ -27,17 +27,20 @@ export const ArtistsDetails = () => {
         <div>
             {artists.map((artist) => (
                 <div key={artist.id}>
-
+                    <br />
                     <section className="artist-name">
                         <h1>{artist.name}</h1>
                     </section>
-
+                <br />
                     <section className="artist-info-picture">
                         <img className="artist-picture" src={artist.artistPictureURL} alt={artist.name} />
                     </section>
-
+                    <br />
+                    <br />
+                <section className="artist-info">
                     <section className="artist-info-genre">
                         <h1>Genre</h1>
+
                         <p className="artist-genre">{artist.genre}</p>
                     </section>
 
@@ -49,6 +52,7 @@ export const ArtistsDetails = () => {
 
                     <section className="artist-info-link">
                         <a href={artist.listenLink}>Listen to {artist.name} here</a>
+                    </section>
                     </section>
                     <br/>
                     <br/>

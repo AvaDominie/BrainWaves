@@ -74,6 +74,8 @@ export const AllArtistList = () => {
                             onClick={() => handleLike(artist)}
                         >Like</button>
                         <hr></hr>
+                        <br />
+                        <br />
                     </div>
                 )
             })}

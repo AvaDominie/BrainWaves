@@ -2,12 +2,12 @@
 
 
 
-.about-title {
-    text-align: center;
-}
 
-.about-info {
+
+.about {
     text-align: center;
     padding: 20px;
     background-color: rgb(226, 230, 222);
+    width: 1211px;
+    margin: 0 auto;
 }
